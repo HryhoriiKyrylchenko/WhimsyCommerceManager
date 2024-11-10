@@ -1,0 +1,1 @@
+# WhimsyCommerceManager
