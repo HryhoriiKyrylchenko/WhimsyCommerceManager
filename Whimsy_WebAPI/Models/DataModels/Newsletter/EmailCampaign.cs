@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Whimsy_WebAPI.Enums.Newsletter;
+using Whimsy_WebAPI.Models.DataModels.MarketplaceInfo.Translation;
+using Whimsy_WebAPI.Models.DataModels.Newsletter.Translation;
 
 namespace Whimsy_WebAPI.Models.DataModels.Newsletter
 {
@@ -15,19 +17,6 @@ namespace Whimsy_WebAPI.Models.DataModels.Newsletter
         /// </summary>
         [Key]
         public int Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the subject of the email campaign.
-        /// </summary>
-        [Required]
-        [MaxLength(200)]
-        public string Subject { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Gets or sets the body content of the email campaign.
-        /// </summary>
-        [Required]
-        public string Body { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the date when the campaign was created.
@@ -50,5 +39,10 @@ namespace Whimsy_WebAPI.Models.DataModels.Newsletter
         /// </summary>
         [Required]
         public NewsletterType NewsletterType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the translation for the email campaign.
+        /// </summary>
+        public virtual ICollection<EmailCampaignTranslation> Translations { get; set; } = [];
     }
 }

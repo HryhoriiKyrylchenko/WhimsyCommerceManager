@@ -3,6 +3,10 @@ using System.ComponentModel.DataAnnotations;
 using Whimsy_WebAPI.Models.DataModels.UserManagement;
 using Whimsy_WebAPI.Models.DataModels.Inventory;
 using Whimsy_WebAPI.Models.DataModels.CartsAndFavourites;
+using Whimsy_WebAPI.Models.DataModels.Analytics;
+using Whimsy_WebAPI.Models.DataModels.Purchase;
+using Whimsy_WebAPI.Models.DataModels.Discounts;
+using Whimsy_WebAPI.Models.DataModels.Products.Translation;
 
 namespace Whimsy_WebAPI.Models.DataModels.Products
 {
@@ -47,11 +51,6 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
         public virtual Seller Seller { get; set; } = null!;
 
         /// <summary>
-        /// Gets or sets the description of the product.
-        /// </summary>
-        public string Description { get; set; } = string.Empty;
-
-        /// <summary>
         /// Gets or sets the SKU (Stock Keeping Unit) for the product variant.
         /// This is a required unique identifier for each variant.
         /// </summary>
@@ -75,6 +74,12 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
         public bool IsVisible { get; set; } = true;
 
         /// <summary>
+        /// Estimated time (in days) to dispatch the item after order.
+        /// </summary>
+        [Range(0, 365, ErrorMessage = "Dispatch time must be between 0 and 365 days.")]
+        public int DispatchTimeInDays { get; set; } = 0;
+
+        /// <summary>
         /// Gets or sets the user ID of the person who last edited the product.
         /// </summary>
         public string? LastEditedByUserId { get; set; }
@@ -89,6 +94,11 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
         /// Gets or sets the date when the product was last edited.
         /// </summary>
         public DateTime? LastEditedDate { get; set; }
+
+        /// <summary>
+        /// The number of units sold for this product variant.
+        /// </summary>
+        public int SoldQuantity { get; set; } = 0;
 
         /// <summary>
         /// Version of the entity for optimistic concurrency control.
@@ -149,8 +159,8 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
         public virtual ICollection<SalesAnalytics> SalesAnalytics { get; set; } = [];
 
         /// <summary>
-        /// Gets or sets the collection of labels associated with the product variant.
+        /// Gets or sets the translation for the product variant.
         /// </summary>
-        public virtual ICollection<Label> Labels { get; set; } = [];
+        public virtual ICollection<ProductVariantTranslation> Translations { get; set; } = [];
     }
 }

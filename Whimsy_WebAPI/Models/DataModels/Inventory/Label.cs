@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Whimsy_WebAPI.Models.DataModels.Products;
 using Whimsy_WebAPI.Enums.Inventory;
+using Whimsy_WebAPI.Models.DataModels.UserManagement;
 
 namespace Whimsy_WebAPI.Models.DataModels.Inventory
 {
@@ -25,22 +26,33 @@ namespace Whimsy_WebAPI.Models.DataModels.Inventory
         public string Code { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets the product associated with this label.
+        /// Gets or sets the type of the code (e.g., Barcode, QRCode).
         /// </summary>
         [Required]
-        public int ProductVariantId { get; set; }
+        public LabelType CodeType { get; set; }
 
         /// <summary>
-        /// Gets or sets the product associated with this label.
+        /// Gets or sets the inventory item associated with this label.
         /// </summary>
-        [ForeignKey(nameof(ProductVariantId))]
-        public virtual ProductVariant ProductVariant { get; set; } = null!;
+        [Required]
+        public int InventoryItemId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the inventory item associated with this label.
+        /// </summary>
+        [ForeignKey(nameof(InventoryItemId))]
+        public virtual InventoryItem InventoryItem { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the date when the label was created.
         /// </summary>
         [Required]
         public DateTime CreatedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date when the label was last updated.
+        /// </summary>
+        public DateTime? LastUpdated { get; set; }
 
         /// <summary>
         /// Gets or sets the status of the label (e.g., active, inactive).
@@ -53,5 +65,21 @@ namespace Whimsy_WebAPI.Models.DataModels.Inventory
         /// </summary>
         [MaxLength(500)]
         public string? Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets ID of the user who last updated the label.
+        /// </summary>
+        public string? LastUpdatedByUserId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the user who last updated the label.
+        /// </summary>
+        [ForeignKey(nameof(LastUpdatedByUserId))]
+        public virtual ApplicationUser? LastUpdatedByUser { get; set; }
+
+        /// <summary>
+        /// Gets or sets any associated activity or status tracking information.
+        /// </summary>
+        public string? ActivityStatus { get; set; }
     }
 }

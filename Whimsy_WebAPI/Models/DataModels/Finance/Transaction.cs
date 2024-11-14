@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Whimsy_WebAPI.Enums.Finance;
+using Whimsy_WebAPI.Models.DataModels.Purchase;
 
 namespace Whimsy_WebAPI.Models.DataModels.Finance
 {
@@ -48,6 +49,13 @@ namespace Whimsy_WebAPI.Models.DataModels.Finance
         /// </summary>
         [Required]
         public TransactionType Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the external transaction identifier from the third-party payment provider.
+        /// This field can be null if no external transaction ID is available.
+        /// </summary>
+        [MaxLength(100)]
+        public string? ExternalTransactionId { get; set; }
 
         /// <summary>
         /// Gets or sets the payment details if the transaction is of type <see cref="TransactionType.Payment"/>.

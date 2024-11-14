@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using Whimsy_WebAPI.Models.DataModels.Support;
 
 namespace Whimsy_WebAPI.Models.DataModels.UserManagement
 {

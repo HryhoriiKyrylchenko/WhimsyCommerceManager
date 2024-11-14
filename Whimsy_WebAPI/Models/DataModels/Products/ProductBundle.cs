@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Whimsy_WebAPI.Models.DataModels.Newsletter.Translation;
+using Whimsy_WebAPI.Models.DataModels.Products.Translation;
 
 namespace Whimsy_WebAPI.Models.DataModels.Products
 {
@@ -11,17 +13,6 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
     {
         [Key]
         public int Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the bundle (e.g., "Holiday Gift Set").
-        /// </summary>
-        [Required]
-        public string Name { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Gets or sets the description of the product bundle.
-        /// </summary>
-        public string? Description { get; set; }
 
         /// <summary>
         /// Gets or sets the total price for the bundle.
@@ -40,5 +31,10 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
         /// Gets or sets the products included in the bundle.
         /// </summary>
         public virtual ICollection<ProductBundleItem> ProductBundleItems { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the translation for the product bundle.
+        /// </summary>
+        public virtual ICollection<ProductBundleTranslation> Translations { get; set; } = [];
     }
 }

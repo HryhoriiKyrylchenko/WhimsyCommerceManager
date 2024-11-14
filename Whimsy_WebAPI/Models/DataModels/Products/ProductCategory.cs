@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Whimsy_WebAPI.Models.DataModels.CartsAndFavourites;
+using Whimsy_WebAPI.Models.DataModels.Discounts;
+using Whimsy_WebAPI.Models.DataModels.Products.Translation;
 
 namespace Whimsy_WebAPI.Models.DataModels.Products
 {
@@ -8,7 +11,6 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
     /// Represents a category entity.
     /// </summary>
     [Table("ProductCategories")]
-    [Index(nameof(Name), IsUnique = true)]
     public class ProductCategory
     {
         /// <summary>
@@ -16,19 +18,6 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
         /// </summary>
         [Key]
         public int Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the category.
-        /// </summary>
-        [Required]
-        [MaxLength(100)]
-        public string Name { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Gets or sets the description of the category.
-        /// </summary>
-        [MaxLength(255)]
-        public string? Description { get; set; }
 
         /// <summary>
         /// Gets or sets the ID of the parent category.
@@ -71,5 +60,10 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
         /// Gets or sets the collection of favorite categories associated with the category.
         /// </summary>
         public virtual ICollection<CategoryDiscount> CategoryDiscounts { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the translation for the product category.
+        /// </summary>
+        public virtual ICollection<ProductCategoryTranslation> Translations { get; set; } = [];
     }
 }

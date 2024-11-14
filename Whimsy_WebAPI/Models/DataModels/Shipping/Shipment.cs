@@ -31,16 +31,16 @@ namespace Whimsy_WebAPI.Models.DataModels.Shipping
         public Order Order { get; set; } = null!;
 
         /// <summary>
-        /// Gets or sets the delivery method.
+        /// Gets or sets the selected shipping option for this delivery.
         /// </summary>
         [Required]
-        public int ShippingMethodId { get; set; }
+        public int ShippingOptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the delivery method associated with the delivery.
+        /// Gets or sets the shipping option with the delivery.
         /// </summary>
-        [ForeignKey(nameof(ShippingMethodId))]
-        public virtual ShippingMethod ShippingMethod { get; set; } = null!;
+        [ForeignKey(nameof(ShippingOptionId))]
+        public virtual ShippingOption ShippingOption { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the delivery address.

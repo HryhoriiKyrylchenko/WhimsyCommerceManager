@@ -72,5 +72,10 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
         /// </summary>
         [Required]
         public ReviewStatus Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collection of photos associated with the review.
+        /// </summary>
+        public virtual ICollection<ReviewPhoto> Photos { get; set; } = [];
     }
 }

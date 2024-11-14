@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Whimsy_WebAPI.Models.DataModels.Products.Translation;
 
 namespace Whimsy_WebAPI.Models.DataModels.Products
 {
@@ -30,19 +31,8 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
         public virtual ProductVariant ProductVariant { get; set; } = null!;
 
         /// <summary>
-        /// Gets or sets the key or name of the attribute.
-        /// This could be a property such as "Color" or "Size".
+        /// Gets or sets the translation for the product variant attribute.
         /// </summary>
-        [Required]
-        [MaxLength(100)]
-        public string Key { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Gets or sets the value of the attribute.
-        /// This could be the specific value for the attribute, such as "Black" or "Large".
-        /// </summary>
-        [Required]
-        [MaxLength(255)]
-        public string Value { get; set; } = string.Empty;
+        public virtual ICollection<ProductVariantAttributeTranslation> Translations { get; set; } = [];
     }
 }

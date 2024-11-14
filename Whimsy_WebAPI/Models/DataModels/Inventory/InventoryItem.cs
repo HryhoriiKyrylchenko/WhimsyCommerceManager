@@ -90,5 +90,10 @@ namespace Whimsy_WebAPI.Models.DataModels.Inventory
         /// Gets or sets the collection of inventory transactions for this item.
         /// </summary>
         public virtual ICollection<InventoryTransaction> Transactions { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the collection of labels associated with the product variant.
+        /// </summary>
+        public virtual ICollection<Label> Labels { get; set; } = [];
     }
 }

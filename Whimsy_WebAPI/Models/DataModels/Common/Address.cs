@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Whimsy_WebAPI.Models.DataModels.UserManagement;
 using Whimsy_WebAPI.Models.DataModels.Inventory;
+using Whimsy_WebAPI.Models.DataModels.Shipping;
 
 namespace Whimsy_WebAPI.Models.DataModels.Common
 {

@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Whimsy_WebAPI.Enums.Translation;
 using Whimsy_WebAPI.Enums.UserManagement;
+using Whimsy_WebAPI.Models.DataModels.CookiePolicy;
+using Whimsy_WebAPI.Models.DataModels.Messaging;
+using Whimsy_WebAPI.Models.DataModels.Notifications;
 
 namespace Whimsy_WebAPI.Models.DataModels.UserManagement
 {
@@ -54,9 +58,8 @@ namespace Whimsy_WebAPI.Models.DataModels.UserManagement
 
         /// <summary>
         /// Gets or sets the user's preferred language for application localization.
-        /// This property is nullable to accommodate users who may not have a preferred language set.
         /// </summary>
-        public string? PreferredLanguage { get; set; }
+        public LanguageCode PreferredLanguage { get; set; }
 
         /// <summary>
         /// Gets or sets the user's time zone to adjust dates and times according to their local time.
@@ -97,5 +100,25 @@ namespace Whimsy_WebAPI.Models.DataModels.UserManagement
         /// Gets or sets the collection of notifications associated with the user.
         /// </summary>
         public virtual ICollection<Notification> Notifications { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the collection of messages associated with the user.
+        /// </summary>
+        public virtual ICollection<Message> Messages { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the collection of user agreement consents associated with the user.
+        /// </summary>
+        public virtual ICollection<UserAgreementConsent> UserAgreementConsents { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the collection of partnership agreement consents associated with the user.
+        /// </summary>
+        public virtual ICollection<PartnershipAgreementConsent> PartnershipAgreementConsents { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the collection of cookie consents associated with the user.
+        /// </summary>
+        public virtual ICollection<CookieConsent> CookieConsents { get; set; } = [];
     }
 }

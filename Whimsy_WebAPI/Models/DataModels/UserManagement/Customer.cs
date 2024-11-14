@@ -1,6 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using Whimsy_WebAPI.Models.DataModels.Support;
+using Whimsy_WebAPI.Models.DataModels.CartsAndFavourites;
+using Whimsy_WebAPI.Models.DataModels.Analytics;
+using Whimsy_WebAPI.Models.DataModels.Newsletter;
+using Whimsy_WebAPI.Models.DataModels.Products;
+using Whimsy_WebAPI.Models.DataModels.Discounts;
+using Whimsy_WebAPI.Models.DataModels.Shipping;
+using Whimsy_WebAPI.Models.DataModels.Purchase;
+using Whimsy_WebAPI.Models.DataModels.Finance;
+using Whimsy_WebAPI.Models.DataModels.Messaging.Whimsy_WebAPI.Models.DataModels.Messaging;
 
 namespace Whimsy_WebAPI.Models.DataModels.UserManagement
 {
@@ -99,5 +109,10 @@ namespace Whimsy_WebAPI.Models.DataModels.UserManagement
         /// Gets or sets the collection of newsletter subscriptions associated with the user.
         /// </summary>
         public virtual ICollection<NewsletterSubscription> NewsletterSubscriptions { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the list of conversations associated with the customer.
+        /// </summary>
+        public virtual ICollection<Conversation> Conversations { get; set; } = [];
     }
 }

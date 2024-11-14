@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
+using Whimsy_WebAPI.Models.DataModels.Common;
 
 namespace Whimsy_WebAPI.Models.DataModels.UserManagement
 {

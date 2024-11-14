@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Whimsy_WebAPI.Models.DataModels.UserManagement;
 using Whimsy_WebAPI.Models.DataModels.Discounts;
+using Whimsy_WebAPI.Models.DataModels.Products.Translation;
 
 namespace Whimsy_WebAPI.Models.DataModels.Products
 {
@@ -18,18 +19,6 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
         /// </summary>
         [Key]
         public int Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the product.
-        /// </summary>
-        [Required]
-        [MaxLength(100)]
-        public string Name { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Gets or sets the description of the product.
-        /// </summary>
-        public string Description { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the base price of the product.
@@ -117,5 +106,10 @@ namespace Whimsy_WebAPI.Models.DataModels.Products
         /// This is a virtual navigation property that allows lazy loading of the related <see cref="ProductVariant"/> entities.
         /// </remarks>
         public virtual ICollection<ProductVariant> ProductVariants { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the collection of products translations associated with the product.
+        /// </summary>
+        public virtual ICollection<ProductTranslation> ProductTranslations { get; set; } = [];
     }
 }

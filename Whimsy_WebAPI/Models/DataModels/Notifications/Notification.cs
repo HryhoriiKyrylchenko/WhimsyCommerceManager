@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Whimsy_WebAPI.Enums.Notifications;
 using Whimsy_WebAPI.Models.DataModels.UserManagement;
+using Whimsy_WebAPI.Models.DataModels.Products.Translation;
+using Whimsy_WebAPI.Models.DataModels.Notifications.Translation;
 
 namespace Whimsy_WebAPI.Models.DataModels.Notifications
 {
@@ -27,7 +29,7 @@ namespace Whimsy_WebAPI.Models.DataModels.Notifications
 
         /// <summary>
         /// Gets or sets the customer associated with this entity.
-        /// This navigation property provides access to the related <see cref="Customer"/> entity.
+        /// This navigation property provides access to the related <see cref="ApplicationUser"/> entity.
         /// </summary>
         [ForeignKey(nameof(UserId))]
         public virtual ApplicationUser User { get; set; } = null!;
@@ -39,13 +41,6 @@ namespace Whimsy_WebAPI.Models.DataModels.Notifications
         public NotificationType Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the content of the notification.
-        /// </summary>
-        [Required]
-        [MaxLength(1000)]
-        public string Content { get; set; } = string.Empty;
-
-        /// <summary>
         /// Gets or sets the date and time when the notification was created.
         /// </summary>
         [Required]
@@ -55,5 +50,10 @@ namespace Whimsy_WebAPI.Models.DataModels.Notifications
         /// Gets or sets whether the notification has been read.
         /// </summary>
         public bool IsRead { get; set; } = false;
+
+        /// <summary>
+        /// Gets or sets the translation for the notification.
+        /// </summary>
+        public virtual ICollection<NotificationTranslation> Translations { get; set; } = [];
     }
 }

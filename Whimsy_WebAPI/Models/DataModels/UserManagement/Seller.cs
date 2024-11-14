@@ -5,6 +5,9 @@ using Whimsy_WebAPI.Models.DataModels.Products;
 using Whimsy_WebAPI.Models.DataModels.CartsAndFavourites;
 using Whimsy_WebAPI.Models.DataModels.Discounts;
 using Whimsy_WebAPI.Models.DataModels.Finance;
+using Whimsy_WebAPI.Models.DataModels.Messaging;
+using Whimsy_WebAPI.Models.DataModels.Newsletter.Translation;
+using Whimsy_WebAPI.Models.DataModels.UserManagement.Translation;
 
 namespace Whimsy_WebAPI.Models.DataModels.UserManagement
 {
@@ -26,16 +29,6 @@ namespace Whimsy_WebAPI.Models.DataModels.UserManagement
         [JsonIgnore]
         [ForeignKey(nameof(UserId))]
         public virtual ApplicationUser User { get; set; } = null!;
-
-        /// <summary>
-        /// Gets or sets the name of the shop.
-        /// </summary>
-        public string ShopName { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Gets or sets the description of the shop.
-        /// </summary>
-        public string ShopDescription { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the date when the shop joined the platform.
@@ -66,7 +59,12 @@ namespace Whimsy_WebAPI.Models.DataModels.UserManagement
         /// <summary>
         /// Gets or sets the seller accout balance associated with this seller.
         /// </summary>
-        public virtual SellerAccountBalance SellerAccountBalance { get; set; } = new();
+        public virtual SellerAccountBalance SellerAccountBalance { get; set; } = null!;
+
+        /// <summary>
+        /// Gets or sets the logo entity associated with the seller.
+        /// </summary>
+        public virtual SellerLogo? SellerLogo { get; set; }
 
         /// <summary>
         /// Gets or sets the collection of Product vriants associated with this seller.
@@ -92,5 +90,20 @@ namespace Whimsy_WebAPI.Models.DataModels.UserManagement
         /// Gets or sets the collection of PayoutSchedules associated with the seller.
         /// </summary>
         public virtual ICollection<PayoutSchedule> PayoutSchedules { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the list of bank accounts associated with the seller.
+        /// </summary>
+        public virtual ICollection<SellerBankAccount> BankAccounts { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the list of conversations associated with the seller.
+        /// </summary>
+        public virtual ICollection<Conversation> Conversations { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the translation for the seller info.
+        /// </summary>
+        public virtual ICollection<SellerTranslation> Translations { get; set; } = [];
     }
 }

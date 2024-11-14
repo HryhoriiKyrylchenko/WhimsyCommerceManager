@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using Whimsy_WebAPI.Enums.Purchase;
 using Whimsy_WebAPI.Models.DataModels.UserManagement;
+using Whimsy_WebAPI.Models.DataModels.Finance;
+using Whimsy_WebAPI.Models.DataModels.Shipping;
 
 namespace Whimsy_WebAPI.Models.DataModels.Purchase
 {
