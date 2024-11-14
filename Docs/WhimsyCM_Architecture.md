@@ -86,7 +86,7 @@ Inventory management is integrated into the system to handle:
 ## Technology Stack
 
 - **Frontend**:
-  - Blazor, React, or Angular for building dynamic, single-page applications.
+  - Blazor for building dynamic, single-page applications.
 - **Backend**:
   - .NET Core (C#) for RESTful API development.
   - ASP.NET Core Identity for user authentication.
