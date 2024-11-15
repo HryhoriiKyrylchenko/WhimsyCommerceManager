@@ -32,12 +32,12 @@ Whimsy is designed to be a versatile marketplace that can scale for both individ
 
 ## Tech Stack
 
-- **Backend**: .NET 8 (C#)
-- **Frontend**: React.js (for future implementation, as needed)
-- **Database**: SQL Server (or another preferred database solution)
+- **Backend**: .NET 9 (C#)
+- **Frontend**: Blazor 
+- **Database**: SQL Server
 - **Authentication**: JWT (JSON Web Tokens) for secure user authentication
-- **Payment Gateway**: Integration with popular payment processors (e.g., Stripe, PayPal)
-- **Hosting**: Azure or AWS (depending on your needs)
+- **Payment Gateway**: Integration with popular payment processors 
+- **Hosting**: Azure
 
 ---
 
@@ -47,8 +47,8 @@ To get started with the project, follow the instructions below to set up the dev
 
 ### Prerequisites
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download) (for backend development)
-- [Node.js](https://nodejs.org/) (if developing the frontend)
+- [.NET 9 SDK](https://dotnet.microsoft.com/download) (for backend development)
+- [Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor) (if developing the frontend)
 - [SQL Server](https://www.microsoft.com/en-us/sql-server) or equivalent database system
 
 ---
