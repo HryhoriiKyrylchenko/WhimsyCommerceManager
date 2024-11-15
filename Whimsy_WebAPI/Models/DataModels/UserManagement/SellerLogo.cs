@@ -20,7 +20,7 @@ namespace Whimsy_WebAPI.Models.DataModels.UserManagement
         /// This is a foreign key linking to the <see cref="Seller"/> entity.
         /// </summary>
         [Required]
-        public int SellerId { get; set; }
+        public string SellerId { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the associated seller.

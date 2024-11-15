@@ -102,9 +102,14 @@ namespace Whimsy_WebAPI.Models.DataModels.UserManagement
         public virtual ICollection<Notification> Notifications { get; set; } = [];
 
         /// <summary>
-        /// Gets or sets the collection of messages associated with the user.
+        /// A navigational property for messages sent by the user.
         /// </summary>
-        public virtual ICollection<Message> Messages { get; set; } = [];
+        public virtual ICollection<Message> SentMessages { get; set; } = [];
+
+        /// <summary>
+        /// A navigational property for messages received by the user.
+        /// </summary>
+        public virtual ICollection<Message> ReceivedMessages { get; set; } = [];
 
         /// <summary>
         /// Gets or sets the collection of user agreement consents associated with the user.

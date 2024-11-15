@@ -55,6 +55,11 @@ namespace Whimsy_WebAPI.Models.DataModels.CookiePolicy
         public bool IsActive { get; set; }
 
         /// <summary>
+        /// Gets or sets the cookie consents assosiated with the cookie policy.
+        /// </summary>
+        public virtual ICollection<CookieConsent> CookieConsents { get; set; } = [];
+
+        /// <summary>
         /// Gets or sets the translation for the cookie policy.
         /// </summary>
         public virtual ICollection<CookiePolicyTranslation> Translations { get; set; } = [];

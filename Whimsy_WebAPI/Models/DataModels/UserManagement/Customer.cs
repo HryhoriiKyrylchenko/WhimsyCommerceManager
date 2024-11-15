@@ -10,7 +10,7 @@ using Whimsy_WebAPI.Models.DataModels.Discounts;
 using Whimsy_WebAPI.Models.DataModels.Shipping;
 using Whimsy_WebAPI.Models.DataModels.Purchase;
 using Whimsy_WebAPI.Models.DataModels.Finance;
-using Whimsy_WebAPI.Models.DataModels.Messaging.Whimsy_WebAPI.Models.DataModels.Messaging;
+using Whimsy_WebAPI.Models.DataModels.Messaging;
 
 namespace Whimsy_WebAPI.Models.DataModels.UserManagement
 {

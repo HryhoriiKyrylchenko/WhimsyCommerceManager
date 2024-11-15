@@ -15,6 +15,7 @@ namespace Whimsy_WebAPI.Models.DataModels.Discounts
         /// Gets or sets the unique identifier for the product.
         /// This property is required and maps to the ProductId column in the database.
         /// </summary>
+        [Key, Column(Order = 0)]
         [Required]
         public int ProductId { get; set; }
 
@@ -29,6 +30,7 @@ namespace Whimsy_WebAPI.Models.DataModels.Discounts
         /// Gets or sets the unique identifier for the discount.
         /// This property is required and maps to the DiscountId column in the database.
         /// </summary>
+        [Key, Column(Order = 1)]
         [Required]
         public int DiscountId { get; set; }
 

@@ -8,7 +8,7 @@ namespace Whimsy_WebAPI.Models.DataModels.MarketplaceInfo.Translation
     /// <summary>
     /// Represents a translated version of a marketplace returns in a specific language.
     /// </summary>
-    [Table("MarketplacePolicyTranslations")]
+    [Table("MarketplaceReturnsTranslations")]
     public class MarketplaceReturnsTranslation
     {
         /// <summary>

@@ -33,7 +33,7 @@ namespace Whimsy_WebAPI.Models.DataModels.CartsAndFavourites
         /// Gets or sets the unique identifier of the seller that has been marked as a favorite.
         /// </summary>
         [Required]
-        public int SellerId { get; set; }
+        public string SellerId { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the seller that has been marked as a favorite.

@@ -17,7 +17,7 @@ namespace Whimsy_WebAPI.Models.DataModels.Discounts
         /// This property is required and maps to the SellerId column in the database.
         /// </summary>
         [Required]
-        public int SellerId { get; set; }
+        public string SellerId { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the seller associated with the discount.

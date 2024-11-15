@@ -8,6 +8,7 @@ using Whimsy_WebAPI.Models.DataModels.Finance;
 using Whimsy_WebAPI.Models.DataModels.Messaging;
 using Whimsy_WebAPI.Models.DataModels.Newsletter.Translation;
 using Whimsy_WebAPI.Models.DataModels.UserManagement.Translation;
+using Whimsy_WebAPI.Models.DataModels.Inventory;
 
 namespace Whimsy_WebAPI.Models.DataModels.UserManagement
 {
@@ -38,6 +39,7 @@ namespace Whimsy_WebAPI.Models.DataModels.UserManagement
         /// <summary>
         /// Gets or sets the rating of the shop.
         /// </summary>
+        [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5.")]
         public decimal Rating { get; set; }
 
         /// <summary>
@@ -67,9 +69,14 @@ namespace Whimsy_WebAPI.Models.DataModels.UserManagement
         public virtual SellerLogo? SellerLogo { get; set; }
 
         /// <summary>
-        /// Gets or sets the collection of Product vriants associated with this seller.
+        /// Gets or sets the collection of Product variants associated with this seller.
         /// </summary>
         public virtual ICollection<ProductVariant> ProductVariants { get; set; } = [];
+
+        /// <summary>
+        /// Gets or sets the collection of inventory items associated with this seller.
+        /// </summary>
+        public virtual ICollection<InventoryItem> InventoryItems { get; set; } = [];
 
         /// <summary>
         /// Gets or sets the collection of seller favorites associated with the seller.

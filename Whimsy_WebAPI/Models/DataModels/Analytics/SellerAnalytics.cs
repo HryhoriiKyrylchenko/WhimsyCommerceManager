@@ -20,7 +20,7 @@ namespace Whimsy_WebAPI.Models.DataModels.Analytics
         /// Gets or sets the identifier of the associated seller.
         /// </summary>
         [Required]
-        public int SellerId { get; set; }
+        public string SellerId { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the associated seller for which the analytics data is recorded.

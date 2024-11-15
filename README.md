@@ -47,7 +47,7 @@ To get started with the project, follow the instructions below to set up the dev
 
 ### Prerequisites
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download) (for backend development)
+- [.NET 9 SDK](https://dotnet.microsoft.com/download) (for backend development)
 - [Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor) (if developing the frontend)
 - [SQL Server](https://www.microsoft.com/en-us/sql-server) or equivalent database system
 

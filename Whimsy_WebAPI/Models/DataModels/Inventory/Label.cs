@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Whimsy_WebAPI.Models.DataModels.Products;
 using Whimsy_WebAPI.Enums.Inventory;
 using Whimsy_WebAPI.Models.DataModels.UserManagement;
+using Microsoft.EntityFrameworkCore;
 
 namespace Whimsy_WebAPI.Models.DataModels.Inventory
 {

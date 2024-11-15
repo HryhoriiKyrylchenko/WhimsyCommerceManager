@@ -591,66 +591,85 @@ namespace Whimsy_WebAPI.Services.Data
         /// <param name="modelBuilder">The builder being used to construct the model for this context.</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<CategoryDiscount>()
-            //    .HasKey(cd => new { cd.CategoryId, cd.DiscountId });
+            modelBuilder.Entity<CategoryDiscount>()
+                .HasKey(cd => new { cd.CategoryId, cd.DiscountId });
 
-            //modelBuilder.Entity<CustomerCoupon>()
-            //    .HasKey(cc => new { cc.CustomerId, cc.CouponId });
+            modelBuilder.Entity<SellerDiscount>()
+                .HasKey(cd => new { cd.SellerId, cd.DiscountId });
 
-            //modelBuilder.Entity<ProductDiscount>()
-            //    .HasKey(pd => new { pd.ProductId, pd.DiscountId });
+            modelBuilder.Entity<CustomerCoupon>()
+                .HasKey(cc => new { cc.CustomerId, cc.CouponId });
 
-            //modelBuilder.Entity<ProductVariantDiscount>()
-            //    .HasKey(pvd => new { pvd.ProductVariantId, pvd.DiscountId });
+            modelBuilder.Entity<ProductDiscount>()
+                .HasKey(pd => new { pd.ProductId, pd.DiscountId });
 
-            //modelBuilder.Entity<CustomerPaymentMethod>()
-            //    .HasKey(cpm => new { cpm.CustomerId, cpm.PaymentMethodId });
+            modelBuilder.Entity<ProductVariantDiscount>()
+                .HasKey(pvd => new { pvd.ProductVariantId, pvd.DiscountId });
 
-            //modelBuilder.Entity<ProductTag>()
-            //    .HasKey(pt => new { pt.ProductId, pt.TagId });
+            modelBuilder.Entity<CustomerPaymentMethod>()
+                .HasKey(cpm => new { cpm.CustomerId, cpm.PaymentMethodId });
 
-            //modelBuilder.Entity<CustomerShippingMethod>()
-            //    .HasKey(csm => new { csm.CustomerId, csm.ShippingMethodId });
+            modelBuilder.Entity<ProductTag>()
+                .HasKey(pt => new { pt.ProductId, pt.TagId });
 
-            //modelBuilder.Entity<UserAddress>()
-            //    .HasKey(ua => new { ua.UserId, ua.AddressId });
+            modelBuilder.Entity<CustomerShippingMethod>()
+                .HasKey(csm => new { csm.CustomerId, csm.ShippingMethodId });
 
+            modelBuilder.Entity<UserAddress>()
+                .HasKey(ua => new { ua.UserId, ua.AddressId });
 
-            //modelBuilder.Entity<Customer>()
-            //    .HasIndex(c => c.UserId)
-            //    .IsUnique();
+            modelBuilder.Entity<Customer>()
+                .HasIndex(c => c.UserId)
+                .IsUnique();
 
-            //modelBuilder.Entity<Employee>()
-            //    .HasIndex(e => e.UserId)
-            //    .IsUnique();
+            modelBuilder.Entity<Employee>()
+                .HasIndex(e => e.UserId)
+                .IsUnique();
 
-            //modelBuilder.Entity<Customer>()
-            //    .HasOne(c => c.User)
-            //    .WithOne(u => u.Customer)
-            //    .HasForeignKey<Customer>(c => c.UserId);
+            modelBuilder.Entity<Seller>()
+                .HasIndex(e => e.UserId)
+                .IsUnique();
 
-            //modelBuilder.Entity<Employee>()
-            //    .HasOne(e => e.User)
-            //    .WithOne(u => u.Employee)
-            //    .HasForeignKey<Employee>(e => e.UserId);
+            modelBuilder.Entity<Label>()
+                .HasIndex(l => l.Code)
+                .IsUnique();
 
-            //modelBuilder.Entity<TicketHistory>()
-            //    .HasOne(th => th.Ticket)
-            //    .WithMany(st => st.TicketHistories)
-            //    .HasForeignKey(th => th.TicketId)
-            //    .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Seller>()
+                .Property(s => s.Rating)
+                .HasPrecision(3, 2);
 
-            //modelBuilder.Entity<TicketHistory>()
-            //    .HasOne(th => th.Employee)
-            //    .WithMany(e => e.TicketHistories)
-            //    .HasForeignKey(th => th.EmployeeId)
-            //    .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Customer>()
+                .HasOne(c => c.User)
+                .WithOne(u => u.Customer)
+                .HasForeignKey<Customer>(c => c.UserId);
 
-            //modelBuilder.Entity<ReturnNote>()
-            //    .HasOne(rn => rn.ReturnRequest)
-            //    .WithMany(rr => rr.ReturnNotes)
-            //    .HasForeignKey(rn => rn.ReturnRequestId)
-            //    .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Employee>()
+                .HasOne(e => e.User)
+                .WithOne(u => u.Employee)
+                .HasForeignKey<Employee>(e => e.UserId);
+
+            modelBuilder.Entity<Seller>()
+                .HasOne(s => s.User)
+                .WithOne(u => u.Seller)
+                .HasForeignKey<Seller>(e => e.UserId);
+
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes()
+             .SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Sender)
+                .WithMany(u => u.SentMessages)
+                .HasForeignKey(m => m.SenderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Receiver)
+                .WithMany(u => u.ReceivedMessages)
+                .HasForeignKey(m => m.ReceiverId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);
         }

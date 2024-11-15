@@ -7,14 +7,9 @@ namespace Whimsy_WebAPI.Controllers.Communication
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MessagingController : ControllerBase
+    public class MessagingController(ApplicationDbContext context) : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-
-        public MessagingController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        private readonly ApplicationDbContext _context = context;
 
         // Endpoint to send a message
         [HttpPost("send-message")]
@@ -29,7 +24,7 @@ namespace Whimsy_WebAPI.Controllers.Communication
                 SentAt = DateTime.UtcNow
             };
 
-            _context.Messages.Add(message);
+            _context.Messages?.Add(message);
             await _context.SaveChangesAsync();
 
             // Optionally: Notify platform moderators about the message
@@ -42,7 +37,7 @@ namespace Whimsy_WebAPI.Controllers.Communication
         [HttpGet("conversation/{id}")]
         public IActionResult GetConversation(int id)
         {
-            var conversation = _context.Conversations
+            var conversation = _context.Conversations?
                 .Where(c => c.Id == id)
                 .Select(c => new
                 {
@@ -71,6 +66,8 @@ namespace Whimsy_WebAPI.Controllers.Communication
         private async Task NotifyModerators(Message message)
         {
             // Implement notification logic here (e.g., sending an email or creating a log entry)
+            await _context.SaveChangesAsync();
+            throw new NotImplementedException(message.Content);
         }
     }
 }

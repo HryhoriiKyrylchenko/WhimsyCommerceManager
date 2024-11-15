@@ -21,7 +21,7 @@ namespace Whimsy_WebAPI.Models.DataModels.UserManagement.Translation
         /// Gets or sets the identifier of the associated seller.
         /// </summary>
         [Required]
-        public int SellerId { get; set; }
+        public string SellerId { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the seller associated sellet translation.

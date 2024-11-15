@@ -20,7 +20,7 @@ namespace Whimsy_WebAPI.Models.DataModels.Finance
         /// Gets or sets the ID of the seller associated with the account balance.
         /// </summary>
         [Required]
-        public int SellerId { get; set; }
+        public string SellerId { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the associated <see cref="Seller"/> entity for the account balance.

@@ -13,10 +13,8 @@ namespace Whimsy_WebAPI.Models.DataModels.Finance
     /// </remarks>
     /// <param name="bankAccountService">The service used for encrypting and decrypting the IBAN.</param>
     [Table("SellerBankAccounts")]
-    public class SellerBankAccount(BankAccountService bankAccountService)
+    public class SellerBankAccount()
     {
-        private readonly BankAccountService _bankAccountService = bankAccountService;
-
         /// <summary>
         /// Gets or sets the unique identifier for the bank account.
         /// </summary>
@@ -41,17 +39,6 @@ namespace Whimsy_WebAPI.Models.DataModels.Finance
         /// </summary>
         [Required]
         private string EncryptedIBAN { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Gets or sets the decrypted IBAN of the bank account.
-        /// The IBAN is encrypted before being stored in the database and decrypted upon retrieval.
-        /// </summary>
-        [NotMapped]
-        public string IBAN
-        {
-            get => _bankAccountService.DecryptIBAN(EncryptedIBAN);
-            set => EncryptedIBAN = _bankAccountService.EncryptIBAN(value);
-        }
 
         /// <summary>
         /// Gets or sets the currency code for the bank account.
